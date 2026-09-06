@@ -1,0 +1,62 @@
+<section class="hero compact">
+  <div>
+    <p class="eyebrow">DECISION EXPLAINER / <%= h(@decision.operation_id) %></p>
+    <h1><%= @operation.amount.round %> ₽ → <em><%= h(@decision.selected_provider) %></em></h1>
+    <p class="subtitle"><%= h(@decision.explanation) %></p>
+  </div>
+  <a class="button ghost" href="/?profile=<%= h(@profile) %>">← К обзору</a>
+</section>
+
+<section class="kpis small">
+  <article><span>Банк</span><strong class="text"><%= h(@operation.bank) %></strong></article>
+  <article><span>Результат</span><strong class="text"><%= h(@decision.simulated_result) %></strong></article>
+  <article><span>Полная задержка</span><strong><%= @decision.latency_sec %><b>s</b></strong></article>
+  <article><span>Попытки</span><strong><%= @decision.attempts.count { |a| a.decision == "selected" } %></strong></article>
+</section>
+
+<section class="panel">
+  <div class="panel-head"><div><p class="eyebrow">AUDIT TRAIL</p><h2>Последовательность решения</h2></div><span class="tag">100% TRACEABLE</span></div>
+  <div class="timeline">
+    <% @decision.attempts.each_with_index do |attempt, index| %>
+      <article class="timeline-item <%= h(attempt.decision) %>">
+        <div class="timeline-index"><%= index + 1 %></div>
+        <div class="timeline-body">
+          <div class="timeline-head">
+            <h3><%= h(attempt.provider) %></h3>
+            <span class="status <%= h(attempt.result || attempt.decision) %>"><%= h(attempt.result || attempt.decision) %></span>
+          </div>
+          <strong><%= h(attempt.reason) %></strong>
+          <p><%= h(attempt.details) %></p>
+          <% if attempt.score_breakdown %>
+            <div class="score-grid">
+              <% attempt.score_breakdown.each do |name, score| %>
+                <div>
+                  <span><%= h(name) %></span>
+                  <div class="mini-track"><i style="width:<%= bar_width(score["raw"] * 100) %>%"></i></div>
+                  <b><%= score["weighted"] %></b>
+                </div>
+              <% end %>
+            </div>
+            <p class="total-score">Composite score: <strong><%= attempt.score %></strong></p>
+          <% end %>
+        </div>
+      </article>
+    <% end %>
+  </div>
+</section>
+
+<section class="panel counterfactual">
+  <p class="eyebrow">COUNTERFACTUAL</p>
+  <h2>Что изменило бы решение?</h2>
+  <% excluded = @decision.attempts.select { |attempt| attempt.decision == "skipped" } %>
+  <% if excluded.empty? %>
+    <p>Выбранный провайдер был единственным или уверенно победил по активному профилю.</p>
+  <% else %>
+    <% excluded.first(3).each do |attempt| %>
+      <div class="recommendation">
+        <strong><%= h(attempt.provider) %></strong>
+        <p>Устраните условие <code><%= h(attempt.reason) %></code>: <%= h(attempt.details) %></p>
+      </div>
+    <% end %>
+  <% end %>
+</section>

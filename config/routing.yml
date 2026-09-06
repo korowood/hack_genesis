@@ -1,0 +1,77 @@
+seed: genesis-2026
+fallback_provider: spacepayments
+validator_compatibility:
+  zero_traffic_is_hard: true
+
+profiles:
+  submission:
+    simulation: always_approve
+    weights:
+      traffic_count: 0.35
+      traffic_volume: 0.20
+      priority: 0.15
+      conversion: 0.10
+      amount_band: 0.05
+      load: 0.10
+      turnover: 0.05
+  balanced:
+    simulation: stochastic
+    weights:
+      traffic_count: 0.25
+      traffic_volume: 0.20
+      priority: 0.10
+      conversion: 0.20
+      amount_band: 0.05
+      load: 0.15
+      turnover: 0.05
+  conversion_first:
+    simulation: stochastic
+    weights:
+      traffic_count: 0.10
+      traffic_volume: 0.10
+      priority: 0.05
+      conversion: 0.45
+      amount_band: 0.05
+      load: 0.15
+      turnover: 0.10
+  resilience:
+    simulation: stochastic
+    weights:
+      traffic_count: 0.15
+      traffic_volume: 0.10
+      priority: 0.10
+      conversion: 0.20
+      amount_band: 0.05
+      load: 0.35
+      turnover: 0.05
+
+provider_extensions:
+  vipay:
+    volume_share_pct: 40
+    requests_per_minute_limit: 15
+    daily_turnover_min: 2000000
+    daily_turnover_max: 5000000
+  payflow:
+    volume_share_pct: 25
+    requests_per_minute_limit: 10
+    daily_turnover_min: 2500000
+    daily_turnover_max: 3000000
+  quickpay:
+    volume_share_pct: 35
+    requests_per_minute_limit: 20
+    daily_turnover_min: 1000000
+    daily_turnover_max: 8000000
+
+amount_bands:
+  - min: 0
+    max: 50000
+    preferred: payflow
+  - min: 50001
+    max: 100000
+    preferred: vipay
+  - min: 100001
+    preferred: quickpay
+
+risk:
+  soft_utilization_threshold: 0.80
+  critical_utilization_threshold: 0.95

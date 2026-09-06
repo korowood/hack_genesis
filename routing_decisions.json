@@ -1,0 +1,1037 @@
+[
+  {
+    "operation_id": "op_101",
+    "selected_provider": "vipay",
+    "attempts": [
+      {
+        "provider": "vipay",
+        "decision": "selected",
+        "reason": "best_composite_score",
+        "details": "Профиль submission: главные факторы — traffic_count и traffic_volume",
+        "score": 0.8377,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.9,
+            "weight": 0.35,
+            "weighted": 0.315
+          },
+          "traffic_volume": {
+            "raw": 0.9,
+            "weight": 0.2,
+            "weighted": 0.18
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.8722,
+            "weight": 0.1,
+            "weighted": 0.0872
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.68,
+            "weight": 0.1,
+            "weighted": 0.068
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        },
+        "result": "approved"
+      },
+      {
+        "provider": "payflow",
+        "decision": "skipped",
+        "reason": "lower_composite_score",
+        "details": "Итоговый score 0.6723 ниже победителя",
+        "score": 0.6723,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.85,
+            "weight": 0.35,
+            "weighted": 0.2975
+          },
+          "traffic_volume": {
+            "raw": 0.75,
+            "weight": 0.2,
+            "weighted": 0.15
+          },
+          "priority": {
+            "raw": 0.5,
+            "weight": 0.15,
+            "weighted": 0.075
+          },
+          "conversion": {
+            "raw": 0.9308,
+            "weight": 0.1,
+            "weighted": 0.0931
+          },
+          "amount_band": {
+            "raw": 1.0,
+            "weight": 0.05,
+            "weighted": 0.05
+          },
+          "load": {
+            "raw": 0.05,
+            "weight": 0.1,
+            "weighted": 0.005
+          },
+          "turnover": {
+            "raw": 0.0333,
+            "weight": 0.05,
+            "weighted": 0.0017
+          }
+        }
+      },
+      {
+        "provider": "quickpay",
+        "decision": "skipped",
+        "reason": "lower_composite_score",
+        "details": "Итоговый score 0.6224 ниже победителя",
+        "score": 0.6224,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.75,
+            "weight": 0.35,
+            "weighted": 0.2625
+          },
+          "traffic_volume": {
+            "raw": 0.85,
+            "weight": 0.2,
+            "weighted": 0.17
+          },
+          "priority": {
+            "raw": 0.0,
+            "weight": 0.15,
+            "weighted": 0.0
+          },
+          "conversion": {
+            "raw": 0.5933,
+            "weight": 0.1,
+            "weighted": 0.0593
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.9313,
+            "weight": 0.1,
+            "weighted": 0.0931
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        }
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 46,
+    "explanation": "Выбран vipay; hard-фильтры применены до soft-scoring и перед каждым retry"
+  },
+  {
+    "operation_id": "op_102",
+    "selected_provider": "payflow",
+    "attempts": [
+      {
+        "provider": "vipay",
+        "decision": "skipped",
+        "reason": "bank_not_in_list",
+        "details": "alfa отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      },
+      {
+        "provider": "payflow",
+        "decision": "selected",
+        "reason": "best_composite_score",
+        "details": "Профиль submission: главные факторы — traffic_count и traffic_volume",
+        "score": 0.7195,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.85,
+            "weight": 0.35,
+            "weighted": 0.2975
+          },
+          "traffic_volume": {
+            "raw": 0.75,
+            "weight": 0.2,
+            "weighted": 0.15
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.6529,
+            "weight": 0.1,
+            "weighted": 0.0653
+          },
+          "amount_band": {
+            "raw": 1.0,
+            "weight": 0.05,
+            "weighted": 0.05
+          },
+          "load": {
+            "raw": 0.05,
+            "weight": 0.1,
+            "weighted": 0.005
+          },
+          "turnover": {
+            "raw": 0.0333,
+            "weight": 0.05,
+            "weighted": 0.0017
+          }
+        },
+        "result": "approved"
+      },
+      {
+        "provider": "quickpay",
+        "decision": "skipped",
+        "reason": "lower_composite_score",
+        "details": "Итоговый score 0.639 ниже победителя",
+        "score": 0.639,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.75,
+            "weight": 0.35,
+            "weighted": 0.2625
+          },
+          "traffic_volume": {
+            "raw": 0.85,
+            "weight": 0.2,
+            "weighted": 0.17
+          },
+          "priority": {
+            "raw": 0.0,
+            "weight": 0.15,
+            "weighted": 0.0
+          },
+          "conversion": {
+            "raw": 0.7588,
+            "weight": 0.1,
+            "weighted": 0.0759
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.9313,
+            "weight": 0.1,
+            "weighted": 0.0931
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        }
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 55,
+    "explanation": "Выбран payflow; hard-фильтры применены до soft-scoring и перед каждым retry; недоступны целевые: vipay",
+    "goal_unavailable": [
+      {
+        "provider": "vipay",
+        "target_pct": 40.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "alfa отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      }
+    ]
+  },
+  {
+    "operation_id": "op_103",
+    "selected_provider": "quickpay",
+    "attempts": [
+      {
+        "provider": "vipay",
+        "decision": "skipped",
+        "reason": "amount_exceeds_limit",
+        "details": "150000.0 > limit_amount_max 100000"
+      },
+      {
+        "provider": "payflow",
+        "decision": "skipped",
+        "reason": "amount_exceeds_limit",
+        "details": "150000.0 > limit_amount_max 50000"
+      },
+      {
+        "provider": "quickpay",
+        "decision": "selected",
+        "reason": "only_eligible_provider",
+        "details": "Профиль submission: главные факторы — traffic_count и traffic_volume",
+        "score": 0.8099,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.75,
+            "weight": 0.35,
+            "weighted": 0.2625
+          },
+          "traffic_volume": {
+            "raw": 0.85,
+            "weight": 0.2,
+            "weighted": 0.17
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.5933,
+            "weight": 0.1,
+            "weighted": 0.0593
+          },
+          "amount_band": {
+            "raw": 1.0,
+            "weight": 0.05,
+            "weighted": 0.05
+          },
+          "load": {
+            "raw": 0.9313,
+            "weight": 0.1,
+            "weighted": 0.0931
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        },
+        "result": "approved"
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 32,
+    "explanation": "Выбран quickpay; hard-фильтры применены до soft-scoring и перед каждым retry; недоступны целевые: vipay, payflow",
+    "goal_unavailable": [
+      {
+        "provider": "vipay",
+        "target_pct": 40.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "amount_exceeds_limit",
+        "details": "150000.0 > limit_amount_max 100000"
+      },
+      {
+        "provider": "payflow",
+        "target_pct": 35.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "amount_exceeds_limit",
+        "details": "150000.0 > limit_amount_max 50000"
+      }
+    ]
+  },
+  {
+    "operation_id": "op_104",
+    "selected_provider": "quickpay",
+    "attempts": [
+      {
+        "provider": "vipay",
+        "decision": "skipped",
+        "reason": "bank_not_in_list",
+        "details": "gazprombank отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      },
+      {
+        "provider": "payflow",
+        "decision": "skipped",
+        "reason": "bank_not_in_list",
+        "details": "gazprombank отсутствует в разрешённом списке sberbank, alfa"
+      },
+      {
+        "provider": "quickpay",
+        "decision": "selected",
+        "reason": "only_eligible_provider",
+        "details": "Профиль submission: главные факторы — priority и traffic_count",
+        "score": 0.5274,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.4167,
+            "weight": 0.35,
+            "weighted": 0.1458
+          },
+          "traffic_volume": {
+            "raw": 0.1458,
+            "weight": 0.2,
+            "weighted": 0.0292
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.7267,
+            "weight": 0.1,
+            "weighted": 0.0727
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.9219,
+            "weight": 0.1,
+            "weighted": 0.0922
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        },
+        "result": "approved"
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 22,
+    "explanation": "Выбран quickpay; hard-фильтры применены до soft-scoring и перед каждым retry; недоступны целевые: vipay, payflow",
+    "goal_unavailable": [
+      {
+        "provider": "vipay",
+        "target_pct": 40.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "gazprombank отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      },
+      {
+        "provider": "payflow",
+        "target_pct": 35.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "gazprombank отсутствует в разрешённом списке sberbank, alfa"
+      }
+    ]
+  },
+  {
+    "operation_id": "op_105",
+    "selected_provider": "vipay",
+    "attempts": [
+      {
+        "provider": "payflow",
+        "decision": "skipped",
+        "reason": "bank_not_in_list",
+        "details": "tinkoff отсутствует в разрешённом списке sberbank, alfa"
+      },
+      {
+        "provider": "vipay",
+        "decision": "selected",
+        "reason": "best_composite_score",
+        "details": "Профиль submission: главные факторы — traffic_count и traffic_volume",
+        "score": 0.7346,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.65,
+            "weight": 0.35,
+            "weighted": 0.2275
+          },
+          "traffic_volume": {
+            "raw": 0.8306,
+            "weight": 0.2,
+            "weighted": 0.1661
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.8563,
+            "weight": 0.1,
+            "weighted": 0.0856
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.6785,
+            "weight": 0.1,
+            "weighted": 0.0679
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        },
+        "result": "approved"
+      },
+      {
+        "provider": "quickpay",
+        "decision": "skipped",
+        "reason": "lower_composite_score",
+        "details": "Итоговый score 0.3199 ниже победителя",
+        "score": 0.3199,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.25,
+            "weight": 0.35,
+            "weighted": 0.0875
+          },
+          "traffic_volume": {
+            "raw": 0.1417,
+            "weight": 0.2,
+            "weighted": 0.0283
+          },
+          "priority": {
+            "raw": 0.0,
+            "weight": 0.15,
+            "weighted": 0.0
+          },
+          "conversion": {
+            "raw": 0.7438,
+            "weight": 0.1,
+            "weighted": 0.0744
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.9217,
+            "weight": 0.1,
+            "weighted": 0.0922
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        }
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 47,
+    "explanation": "Выбран vipay; hard-фильтры применены до soft-scoring и перед каждым retry; недоступны целевые: payflow",
+    "goal_unavailable": [
+      {
+        "provider": "payflow",
+        "target_pct": 35.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "tinkoff отсутствует в разрешённом списке sberbank, alfa"
+      }
+    ]
+  },
+  {
+    "operation_id": "op_106",
+    "selected_provider": "vipay",
+    "attempts": [
+      {
+        "provider": "payflow",
+        "decision": "skipped",
+        "reason": "amount_exceeds_limit",
+        "details": "52000.0 > limit_amount_max 50000"
+      },
+      {
+        "provider": "vipay",
+        "decision": "selected",
+        "reason": "best_composite_score",
+        "details": "Профиль submission: главные факторы — traffic_count и priority",
+        "score": 0.7016,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.5,
+            "weight": 0.35,
+            "weighted": 0.175
+          },
+          "traffic_volume": {
+            "raw": 0.734,
+            "weight": 0.2,
+            "weighted": 0.1468
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.8722,
+            "weight": 0.1,
+            "weighted": 0.0872
+          },
+          "amount_band": {
+            "raw": 1.0,
+            "weight": 0.05,
+            "weighted": 0.05
+          },
+          "load": {
+            "raw": 0.676,
+            "weight": 0.1,
+            "weighted": 0.0676
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        },
+        "result": "approved"
+      },
+      {
+        "provider": "quickpay",
+        "decision": "skipped",
+        "reason": "lower_composite_score",
+        "details": "Итоговый score 0.3545 ниже победителя",
+        "score": 0.3545,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.35,
+            "weight": 0.35,
+            "weighted": 0.1225
+          },
+          "traffic_volume": {
+            "raw": 0.2151,
+            "weight": 0.2,
+            "weighted": 0.043
+          },
+          "priority": {
+            "raw": 0.0,
+            "weight": 0.15,
+            "weighted": 0.0
+          },
+          "conversion": {
+            "raw": 0.5933,
+            "weight": 0.1,
+            "weighted": 0.0593
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.9217,
+            "weight": 0.1,
+            "weighted": 0.0922
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        }
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 42,
+    "explanation": "Выбран vipay; hard-фильтры применены до soft-scoring и перед каждым retry; недоступны целевые: payflow",
+    "goal_unavailable": [
+      {
+        "provider": "payflow",
+        "target_pct": 35.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "amount_exceeds_limit",
+        "details": "52000.0 > limit_amount_max 50000"
+      }
+    ]
+  },
+  {
+    "operation_id": "op_107",
+    "selected_provider": "payflow",
+    "attempts": [
+      {
+        "provider": "vipay",
+        "decision": "skipped",
+        "reason": "amount_below_minimum",
+        "details": "800.0 < limit_amount_min 1000"
+      },
+      {
+        "provider": "quickpay",
+        "decision": "skipped",
+        "reason": "amount_below_minimum",
+        "details": "800.0 < limit_amount_min 1000"
+      },
+      {
+        "provider": "payflow",
+        "decision": "selected",
+        "reason": "only_eligible_provider",
+        "details": "Профиль submission: главные факторы — traffic_count и priority",
+        "score": 0.6554,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.6833,
+            "weight": 0.35,
+            "weighted": 0.2392
+          },
+          "traffic_volume": {
+            "raw": 0.5862,
+            "weight": 0.2,
+            "weighted": 0.1172
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.9308,
+            "weight": 0.1,
+            "weighted": 0.0931
+          },
+          "amount_band": {
+            "raw": 1.0,
+            "weight": 0.05,
+            "weighted": 0.05
+          },
+          "load": {
+            "raw": 0.05,
+            "weight": 0.1,
+            "weighted": 0.005
+          },
+          "turnover": {
+            "raw": 0.0173,
+            "weight": 0.05,
+            "weighted": 0.0009
+          }
+        },
+        "result": "approved"
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 40,
+    "explanation": "Выбран payflow; hard-фильтры применены до soft-scoring и перед каждым retry; недоступны целевые: vipay, quickpay",
+    "goal_unavailable": [
+      {
+        "provider": "vipay",
+        "target_pct": 40.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "amount_below_minimum",
+        "details": "800.0 < limit_amount_min 1000"
+      },
+      {
+        "provider": "quickpay",
+        "target_pct": 25.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "amount_below_minimum",
+        "details": "800.0 < limit_amount_min 1000"
+      }
+    ]
+  },
+  {
+    "operation_id": "op_108",
+    "selected_provider": "quickpay",
+    "attempts": [
+      {
+        "provider": "vipay",
+        "decision": "skipped",
+        "reason": "bank_not_in_list",
+        "details": "raiffeisen отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      },
+      {
+        "provider": "payflow",
+        "decision": "skipped",
+        "reason": "bank_not_in_list",
+        "details": "raiffeisen отсутствует в разрешённом списке sberbank, alfa"
+      },
+      {
+        "provider": "quickpay",
+        "decision": "selected",
+        "reason": "only_eligible_provider",
+        "details": "Профиль submission: главные факторы — traffic_count и priority",
+        "score": 0.5839,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.4643,
+            "weight": 0.35,
+            "weighted": 0.1625
+          },
+          "traffic_volume": {
+            "raw": 0.3292,
+            "weight": 0.2,
+            "weighted": 0.0658
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.7588,
+            "weight": 0.1,
+            "weighted": 0.0759
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.9217,
+            "weight": 0.1,
+            "weighted": 0.0922
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        },
+        "result": "approved"
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 24,
+    "explanation": "Выбран quickpay; hard-фильтры применены до soft-scoring и перед каждым retry; недоступны целевые: vipay, payflow",
+    "goal_unavailable": [
+      {
+        "provider": "vipay",
+        "target_pct": 40.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "raiffeisen отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      },
+      {
+        "provider": "payflow",
+        "target_pct": 35.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "raiffeisen отсутствует в разрешённом списке sberbank, alfa"
+      }
+    ]
+  },
+  {
+    "operation_id": "op_109",
+    "selected_provider": "vipay",
+    "attempts": [
+      {
+        "provider": "payflow",
+        "decision": "skipped",
+        "reason": "bank_not_in_list",
+        "details": "vtb отсутствует в разрешённом списке sberbank, alfa"
+      },
+      {
+        "provider": "vipay",
+        "decision": "selected",
+        "reason": "best_composite_score",
+        "details": "Профиль submission: главные факторы — traffic_count и priority",
+        "score": 0.6442,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.525,
+            "weight": 0.35,
+            "weighted": 0.1838
+          },
+          "traffic_volume": {
+            "raw": 0.626,
+            "weight": 0.2,
+            "weighted": 0.1252
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.8059,
+            "weight": 0.1,
+            "weighted": 0.0806
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.6708,
+            "weight": 0.1,
+            "weighted": 0.0671
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        },
+        "result": "approved"
+      },
+      {
+        "provider": "quickpay",
+        "decision": "skipped",
+        "reason": "lower_composite_score",
+        "details": "Итоговый score 0.399 ниже победителя",
+        "score": 0.399,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.375,
+            "weight": 0.35,
+            "weighted": 0.1312
+          },
+          "traffic_volume": {
+            "raw": 0.2693,
+            "weight": 0.2,
+            "weighted": 0.0539
+          },
+          "priority": {
+            "raw": 0.0,
+            "weight": 0.15,
+            "weighted": 0.0
+          },
+          "conversion": {
+            "raw": 0.845,
+            "weight": 0.1,
+            "weighted": 0.0845
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.9191,
+            "weight": 0.1,
+            "weighted": 0.0919
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        }
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 36,
+    "explanation": "Выбран vipay; hard-фильтры применены до soft-scoring и перед каждым retry; недоступны целевые: payflow",
+    "goal_unavailable": [
+      {
+        "provider": "payflow",
+        "target_pct": 35.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "vtb отсутствует в разрешённом списке sberbank, alfa"
+      }
+    ]
+  },
+  {
+    "operation_id": "op_110",
+    "selected_provider": "payflow",
+    "attempts": [
+      {
+        "provider": "vipay",
+        "decision": "skipped",
+        "reason": "bank_not_in_list",
+        "details": "alfa отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      },
+      {
+        "provider": "payflow",
+        "decision": "selected",
+        "reason": "best_composite_score",
+        "details": "Профиль submission: главные факторы — traffic_count и priority",
+        "score": 0.6127,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.6278,
+            "weight": 0.35,
+            "weighted": 0.2197
+          },
+          "traffic_volume": {
+            "raw": 0.6089,
+            "weight": 0.2,
+            "weighted": 0.1218
+          },
+          "priority": {
+            "raw": 1.0,
+            "weight": 0.15,
+            "weighted": 0.15
+          },
+          "conversion": {
+            "raw": 0.6529,
+            "weight": 0.1,
+            "weighted": 0.0653
+          },
+          "amount_band": {
+            "raw": 1.0,
+            "weight": 0.05,
+            "weighted": 0.05
+          },
+          "load": {
+            "raw": 0.05,
+            "weight": 0.1,
+            "weighted": 0.005
+          },
+          "turnover": {
+            "raw": 0.0171,
+            "weight": 0.05,
+            "weighted": 0.0009
+          }
+        },
+        "result": "approved"
+      },
+      {
+        "provider": "quickpay",
+        "decision": "skipped",
+        "reason": "lower_composite_score",
+        "details": "Итоговый score 0.4083 ниже победителя",
+        "score": 0.4083,
+        "score_breakdown": {
+          "traffic_count": {
+            "raw": 0.4167,
+            "weight": 0.35,
+            "weighted": 0.1458
+          },
+          "traffic_volume": {
+            "raw": 0.2861,
+            "weight": 0.2,
+            "weighted": 0.0572
+          },
+          "priority": {
+            "raw": 0.0,
+            "weight": 0.15,
+            "weighted": 0.0
+          },
+          "conversion": {
+            "raw": 0.7588,
+            "weight": 0.1,
+            "weighted": 0.0759
+          },
+          "amount_band": {
+            "raw": 0.25,
+            "weight": 0.05,
+            "weighted": 0.0125
+          },
+          "load": {
+            "raw": 0.9191,
+            "weight": 0.1,
+            "weighted": 0.0919
+          },
+          "turnover": {
+            "raw": 0.5,
+            "weight": 0.05,
+            "weighted": 0.025
+          }
+        }
+      }
+    ],
+    "simulated_result": "approved",
+    "latency_sec": 45,
+    "explanation": "Выбран payflow; hard-фильтры применены до soft-scoring и перед каждым retry; недоступны целевые: vipay",
+    "goal_unavailable": [
+      {
+        "provider": "vipay",
+        "target_pct": 40.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "alfa отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      }
+    ]
+  }
+]

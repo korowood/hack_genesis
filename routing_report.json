@@ -1,0 +1,251 @@
+{
+  "period": "2026-07-30",
+  "profile": "submission",
+  "total_operations": 10,
+  "success_rate_pct": 100.0,
+  "distribution": {
+    "vipay": {
+      "count": 4,
+      "share_pct": 40.0,
+      "target_pct": 40.0,
+      "deviation_pct_points": 0.0
+    },
+    "payflow": {
+      "count": 3,
+      "share_pct": 30.0,
+      "target_pct": 35.0,
+      "deviation_pct_points": -5.0
+    },
+    "quickpay": {
+      "count": 3,
+      "share_pct": 30.0,
+      "target_pct": 25.0,
+      "deviation_pct_points": 5.0
+    },
+    "spacepayments": {
+      "count": 0,
+      "share_pct": 0.0,
+      "target_pct": 0.0,
+      "deviation_pct_points": 0.0
+    }
+  },
+  "volume_distribution": {
+    "vipay": {
+      "amount": 102000.0,
+      "share_pct": 26.44,
+      "target_pct": 40.0,
+      "deviation_pct_points": -13.56
+    },
+    "payflow": {
+      "amount": 88800.0,
+      "share_pct": 23.02,
+      "target_pct": 25.0,
+      "deviation_pct_points": -1.98
+    },
+    "quickpay": {
+      "amount": 195000.0,
+      "share_pct": 50.54,
+      "target_pct": 35.0,
+      "deviation_pct_points": 15.54
+    },
+    "spacepayments": {
+      "amount": 0.0,
+      "share_pct": 0.0,
+      "target_pct": 0.0,
+      "deviation_pct_points": 0.0
+    }
+  },
+  "outcomes": {
+    "approved": 10
+  },
+  "skip_reasons": {
+    "lower_composite_score": 7,
+    "bank_not_in_list": 8,
+    "amount_exceeds_limit": 3,
+    "amount_below_minimum": 2
+  },
+  "projected_daily_utilization": {
+    "vipay": {
+      "used": 3302000.0,
+      "limit": 5000000,
+      "utilization_pct": 66.04,
+      "daily_turnover_max": 5000000,
+      "turnover_max_utilization_pct": 66.04,
+      "in_progress_count": 4,
+      "in_progress_amount": 380000.0
+    },
+    "payflow": {
+      "used": 2988800.0,
+      "limit": 3000000,
+      "utilization_pct": 99.63,
+      "daily_turnover_max": 3000000,
+      "turnover_max_utilization_pct": 99.63,
+      "in_progress_count": 2,
+      "in_progress_amount": 120000.0
+    },
+    "quickpay": {
+      "used": 1295000.0,
+      "limit": 8000000,
+      "utilization_pct": 16.19,
+      "daily_turnover_max": 8000000,
+      "turnover_max_utilization_pct": 16.19,
+      "in_progress_count": 1,
+      "in_progress_amount": 50000.0
+    },
+    "spacepayments": {
+      "used": 0.0,
+      "limit": null,
+      "utilization_pct": null,
+      "daily_turnover_max": null,
+      "turnover_max_utilization_pct": null,
+      "in_progress_count": 0,
+      "in_progress_amount": 0.0
+    }
+  },
+  "provider_history_metrics": {
+    "vipay": {
+      "operations": 41,
+      "conversion": 0.7613,
+      "rejection_rate": 0.1463,
+      "expiration_rate": 0.0732,
+      "avg_latency_sec": 87.29,
+      "volume": 1219000.0
+    },
+    "payflow": {
+      "operations": 19,
+      "conversion": 0.5458,
+      "rejection_rate": 0.1579,
+      "expiration_rate": 0.3684,
+      "avg_latency_sec": 278.05,
+      "volume": 287500.0
+    },
+    "quickpay": {
+      "operations": 40,
+      "conversion": 0.6765,
+      "rejection_rate": 0.175,
+      "expiration_rate": 0.15,
+      "avg_latency_sec": 129.98,
+      "volume": 1885000.0
+    },
+    "spacepayments": {
+      "operations": 0,
+      "conversion": null,
+      "rejection_rate": null,
+      "expiration_rate": null,
+      "avg_latency_sec": null,
+      "volume": 0
+    }
+  },
+  "routing_quality": {
+    "mean_absolute_target_deviation_pct_points": 3.33,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "unavailable_target_events": 13,
+    "explainability_coverage_pct": 100.0
+  },
+  "goal_impossibility": {
+    "events": 13,
+    "by_provider": {
+      "vipay": 6,
+      "payflow": 6,
+      "quickpay": 1
+    },
+    "by_blocking_reason": {
+      "bank_not_in_list": 8,
+      "amount_exceeds_limit": 3,
+      "amount_below_minimum": 2
+    },
+    "examples": [
+      {
+        "provider": "vipay",
+        "target_pct": 40.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "alfa отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      },
+      {
+        "provider": "vipay",
+        "target_pct": 40.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "amount_exceeds_limit",
+        "details": "150000.0 > limit_amount_max 100000"
+      },
+      {
+        "provider": "payflow",
+        "target_pct": 35.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "amount_exceeds_limit",
+        "details": "150000.0 > limit_amount_max 50000"
+      },
+      {
+        "provider": "vipay",
+        "target_pct": 40.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "gazprombank отсутствует в разрешённом списке sberbank, tinkoff, vtb"
+      },
+      {
+        "provider": "payflow",
+        "target_pct": 35.0,
+        "reason": "target_provider_ineligible",
+        "blocking_reason": "bank_not_in_list",
+        "details": "gazprombank отсутствует в разрешённом списке sberbank, alfa"
+      }
+    ]
+  },
+  "deviation_causes": [
+    {
+      "provider": "vipay",
+      "metric": "volume_share",
+      "actual_pct": 26.44,
+      "target_pct": 40.0,
+      "deviation_pct_points": -13.56,
+      "summary": "vipay отклонился по объёму на -13.56 п.п.",
+      "reasons": [
+        "перераспределение крупных чеков и amount_band / hard amount limits"
+      ]
+    },
+    {
+      "provider": "quickpay",
+      "metric": "volume_share",
+      "actual_pct": 50.54,
+      "target_pct": 35.0,
+      "deviation_pct_points": 15.54,
+      "summary": "quickpay отклонился по объёму на 15.54 п.п.",
+      "reasons": [
+        "перераспределение крупных чеков и amount_band / hard amount limits"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "provider": "payflow",
+      "action": "снизить трафик и усилить load penalty",
+      "parameter": "strategy_weights.load",
+      "current_value": 0.1,
+      "proposed_value": 0.3,
+      "evidence": "Дневной лимит использован на 99.63%"
+    },
+    {
+      "provider": "payflow",
+      "action": "ослабить нагрузку до исчерпания daily_turnover_max",
+      "parameter": "daily_turnover_max",
+      "current_value": 3000000,
+      "proposed_value": 3000000,
+      "evidence": "Оборотное обязательство max использовано на 99.63%"
+    },
+    {
+      "provider": "vipay",
+      "action": "пересмотреть banks/limits или снизить traffic_percentage недоступного канала",
+      "parameter": "traffic_percentage",
+      "current_value": 40.0,
+      "proposed_value": 30,
+      "evidence": "Целевой провайдер был недоступен 6 раз(а)"
+    }
+  ],
+  "recommendation_messages": [
+    "payflow: снизить трафик и усилить load penalty (strategy_weights.load: 0.1 → 0.3). Дневной лимит использован на 99.63%",
+    "payflow: ослабить нагрузку до исчерпания daily_turnover_max (daily_turnover_max: 3000000 → 3000000). Оборотное обязательство max использовано на 99.63%",
+    "vipay: пересмотреть banks/limits или снизить traffic_percentage недоступного канала (traffic_percentage: 40.0 → 30). Целевой провайдер был недоступен 6 раз(а)"
+  ]
+}

@@ -1,0 +1,49 @@
+<section class="hero compact">
+  <div>
+    <p class="eyebrow">WHAT-IF CONTROL ROOM</p>
+    <h1>Одна очередь.<br><em>Четыре стратегии.</em></h1>
+    <p class="subtitle">Сравнение выполняется на одном state snapshot и воспроизводимом seed.</p>
+  </div>
+  <a class="button ghost" href="/">← К обзору</a>
+</section>
+
+<section class="comparison-grid">
+  <% @comparisons.each do |profile, item| %>
+    <% report = item[:report] %>
+    <article class="panel comparison">
+      <p class="eyebrow">PROFILE</p>
+      <h2><%= h(profile) %></h2>
+      <div class="comparison-kpi"><span>Success rate</span><strong><%= pct(report["success_rate_pct"]) %></strong></div>
+      <div class="comparison-kpi"><span>Target deviation</span><strong><%= report.dig("routing_quality", "mean_absolute_target_deviation_pct_points") %> п.п.</strong></div>
+      <div class="comparison-kpi"><span>Retry / fallback</span><strong><%= report.dig("routing_quality", "retry_count") %> / <%= report.dig("routing_quality", "fallback_count") %></strong></div>
+      <div class="provider-chips">
+        <% report["distribution"].each do |provider, row| %>
+          <span><%= h(provider) %> <b><%= pct(row["share_pct"]) %></b></span>
+        <% end %>
+      </div>
+      <a class="button" href="/?profile=<%= h(profile) %>">Открыть профиль</a>
+    </article>
+  <% end %>
+</section>
+
+<section class="panel">
+  <div class="panel-head"><div><p class="eyebrow">BOUNDED OPTIMIZER / NO ML</p><h2>Лучшие наборы весов</h2></div><span class="tag">27 SCENARIOS</span></div>
+  <p class="muted">Grid search ничего не меняет автоматически: он только ранжирует прозрачные конфигурации по отклонению от целей и fallback-риску.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Objective</th><th>Отклонение</th><th>Fallback</th><th>Count</th><th>Conversion</th><th>Load</th></tr></thead>
+      <tbody>
+      <% @optimizer.each do |candidate| %>
+        <tr>
+          <td><strong><%= candidate["objective"] %></strong></td>
+          <td><%= candidate["target_deviation"] %> п.п.</td>
+          <td><%= candidate["fallback_count"] %></td>
+          <td><%= candidate.dig("weights", "traffic_count") %></td>
+          <td><%= candidate.dig("weights", "conversion") %></td>
+          <td><%= candidate.dig("weights", "load") %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

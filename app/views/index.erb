@@ -1,0 +1,97 @@
+<section class="hero">
+  <div>
+    <p class="eyebrow">PAYMENT INTELLIGENCE / <%= h(@report["period"]) %></p>
+    <h1>Маршрутизация,<br><em>которую можно объяснить.</em></h1>
+    <p class="subtitle">Hard constraints защищают деньги. Composite scoring балансирует конверсию, лимиты и бизнес-цели.</p>
+  </div>
+  <form class="profile-picker" method="get" action="/">
+    <label>Активный профиль</label>
+    <select name="profile" onchange="this.form.submit()">
+      <% profile_names.each do |profile| %>
+        <option value="<%= h(profile) %>" <%= "selected" if profile == @profile %>><%= h(profile) %></option>
+      <% end %>
+    </select>
+  </form>
+</section>
+
+<% if @notice %><div class="notice"><%= h(@notice) %></div><% end %>
+
+<section class="kpis">
+  <article><span>Операций</span><strong><%= @report["total_operations"] %></strong><small>в текущем прогоне</small></article>
+  <article><span>Успешность</span><strong><%= pct(@report["success_rate_pct"]) %></strong><small>seeded simulation</small></article>
+  <article><span>Отклонение</span><strong><%= @report.dig("routing_quality", "mean_absolute_target_deviation_pct_points") %><b> п.п.</b></strong><small>от целевых долей</small></article>
+  <article><span>Fallback</span><strong><%= @report.dig("routing_quality", "fallback_count") %></strong><small>на self-provider</small></article>
+</section>
+
+<section class="grid two">
+  <article class="panel">
+    <div class="panel-head"><div><p class="eyebrow">TARGET CONTROL</p><h2>Распределение трафика</h2></div><span class="tag"><%= h(@profile) %></span></div>
+    <% @report["distribution"].each do |provider, row| %>
+      <div class="metric-row">
+        <div class="metric-label"><strong><%= h(provider) %></strong><span><%= row["count"] %> операций</span></div>
+        <div class="bars">
+          <div class="bar actual" style="width:<%= bar_width(row["share_pct"]) %>%"></div>
+          <i style="left:<%= bar_width(row["target_pct"]) %>%"></i>
+        </div>
+        <b><%= pct(row["share_pct"]) %></b>
+      </div>
+    <% end %>
+    <div class="legend"><span><i class="actual-dot"></i> факт</span><span><i class="target-dot"></i> цель</span></div>
+  </article>
+
+  <article class="panel">
+    <div class="panel-head"><div><p class="eyebrow">CAPACITY RADAR</p><h2>Дневные лимиты</h2></div><span class="tag">STATEFUL</span></div>
+    <% @report["projected_daily_utilization"].each do |provider, row| %>
+      <% next unless row["utilization_pct"] %>
+      <div class="capacity">
+        <div><strong><%= h(provider) %></strong><span><%= row["used"].round %> / <%= row["limit"] %> ₽</span><b><%= pct(row["utilization_pct"]) %></b></div>
+        <div class="capacity-track"><i style="width:<%= bar_width(row["utilization_pct"]) %>%"></i></div>
+      </div>
+    <% end %>
+  </article>
+</section>
+
+<section class="panel operations">
+  <div class="panel-head"><div><p class="eyebrow">DECISION LEDGER</p><h2>Объяснимые решения</h2></div><a class="button ghost" href="/compare">Сравнить профили →</a></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ID</th><th>Сумма</th><th>Банк</th><th>Провайдер</th><th>Результат</th><th>Latency</th><th></th></tr></thead>
+      <tbody>
+      <% @run.decisions.each do |decision| %>
+        <% operation = @operations.find { |item| item.id == decision.operation_id } %>
+        <tr>
+          <td><code><%= h(decision.operation_id) %></code></td>
+          <td><strong><%= operation.amount.round %> ₽</strong></td>
+          <td><%= h(operation.bank) %></td>
+          <td><span class="provider"><%= h(decision.selected_provider) %></span></td>
+          <td><span class="status <%= h(decision.simulated_result) %>"><%= h(decision.simulated_result) %></span></td>
+          <td><%= decision.latency_sec %>s</td>
+          <td><a href="/operations/<%= h(decision.operation_id) %>?profile=<%= h(@profile) %>">Разобрать →</a></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="grid two">
+  <article class="panel">
+    <p class="eyebrow">FAILURE LAB</p>
+    <h2>Инъекция отказа</h2>
+    <p class="muted">Проверьте retry-каскад без изменения данных и submission-профиля.</p>
+    <form class="scenario-form" action="/simulate" method="post">
+      <select name="profile"><% profile_names.each { |p| %><option <%= "selected" if p == "balanced" %>><%= h(p) %></option><% } %></select>
+      <select name="operation_id"><% @operations.each { |op| %><option><%= h(op.id) %></option><% } %></select>
+      <select name="provider_id"><% @run.providers.reject { |p| p.id == "spacepayments" }.each { |p| %><option><%= h(p.id) %></option><% } %></select>
+      <select name="outcome"><option>rejected</option><option>expired</option><option>approved</option></select>
+      <button type="submit">Запустить сценарий</button>
+    </form>
+  </article>
+  <article class="panel">
+    <p class="eyebrow">ACTIONABLE INSIGHTS</p>
+    <h2>Рекомендации</h2>
+    <% @report["recommendations"].first(3).each do |item| %>
+      <div class="recommendation"><strong><%= h(item["provider"]) %> · <%= h(item["action"]) %></strong><p><%= h(item["evidence"]) %></p></div>
+    <% end %>
+  </article>
+</section>

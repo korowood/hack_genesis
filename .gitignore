@@ -1,0 +1,10 @@
+/.bundle/
+/vendor/bundle/
+/.rspec_status
+/demo_decisions.json
+/demo_report.json
+/*.tmp.*
+/CHECKPOINT.md
+/Несохранённый документ 1
+/описание.docx
+/data/*

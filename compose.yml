@@ -1,0 +1,10 @@
+services:
+  dashboard:
+    build: .
+    ports:
+      - "4567:4567"
+    environment:
+      BIND: 0.0.0.0
+      PORT: "4567"
+    volumes:
+      - .:/app
